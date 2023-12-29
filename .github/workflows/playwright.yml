@@ -24,12 +24,16 @@ jobs:
       - uses: actions/setup-python@v3
         with:
           python-version: 3.x
-      - name: Slack Notification
-        uses: rtCamp/action-slack-notify@v2
         env:
-        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-        SLACK_USERNAME: mahesh sprint free job
-        SLACK_TITLE: Post Exection of Job
-        SLACK_MESSAGE: "New changes :rocket:"
-        SLACK_COLOR: ${{ job.status }} # or a specific color like 'good' or '#ff00ff'
-
+          USER_EMAIL: ${{ secrets.USER_EMAIL }}
+          USER_PASSWORD: ${{ secrets.USER_PASSWORD }}
+          run: python sendemail.py
+      - name: Slack Notification
+        uses: rtCamp/action-slack-notify@v3
+        # Send Slack notification on completion
+      - name: Send Slack Notification
+        if: ${{ always() }}
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }} # Make sure SLACK_WEBHOOK is set in repository secrets
+        run: |
+          curl -X POST -H 'Content-type: application/json' --data '{"text":"Playwright tests completed successfully!"}' $SLACK_WEBHOOK

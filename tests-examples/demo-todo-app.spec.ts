@@ -80,7 +80,7 @@ test.describe('Mark all as completed', () => {
   });
 
   test('should allow me to mark all items as completed', async ({ page }) => {
-    // Complete all todos.
+    // Complete all todos
     await page.getByLabel('Mark all as complete').check();
 
     // Ensure all todos have 'completed' class.

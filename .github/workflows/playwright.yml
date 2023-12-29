@@ -24,17 +24,12 @@ jobs:
       - uses: actions/setup-python@v3
         with:
           python-version: 3.x
+      - name: Slack Notification
+        uses: rtCamp/action-slack-notify@v2
         env:
-          USER_EMAIL: ${{ secrets.USER_EMAIL }}
-          USER_PASSWORD: ${{ secrets.USER_PASSWORD }}
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
         SLACK_USERNAME: mahesh sprint free job
         SLACK_TITLE: Post Exection of Job
         SLACK_MESSAGE: "New changes :rocket:"
-        SLACK_COLOR: ${{ job.status }}
-          run: python sendemail.py
-      - name: Slack Notification
-        uses: rtCamp/action-slack-notify@v2
-       
-        # or a specific color like 'good' or '#ff00ff'
+        SLACK_COLOR: ${{ job.status }} # or a specific color like 'good' or '#ff00ff'
 

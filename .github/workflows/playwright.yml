@@ -29,7 +29,7 @@ jobs:
           USER_PASSWORD: ${{ secrets.USER_PASSWORD }}
           run: python sendemail.py
       - name: Slack Notification
-        uses: rtCamp/action-slack-notify@v3
+        uses: rtCamp/action-slack-notify@v2
         # Send Slack notification on completion
       - name: Send Slack Notification
         if: ${{ always() }}

@@ -81,3 +81,9 @@ jobs:
             }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }} # required
+      - name: Upload Report to Slack Channel
+        uses: adrey/slack-file-upload-action@master
+        with:
+          token: ${{ secrets.SLACK_TOKEN }}
+          path: playwright-report\index.html
+          channel: checking-notifications

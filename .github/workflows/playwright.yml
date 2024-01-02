@@ -81,9 +81,13 @@ jobs:
             }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }} # required
-      - name: Upload Report to Slack Channel
+      - name: Zip the Report
+        uses: montudor/action-zip@v1
+        with:
+          args: zip -qq -r playwright-report.zip playwright-report
+      - name: Upload Zipped Report to Slack Channel
         uses: adrey/slack-file-upload-action@master
         with:
           token: ${{ secrets.SLACK_TOKEN }}
-          path: playwright-report/index.html
+          path: playwright-report.zip
           channel: checking-notifications

@@ -1,5 +1,5 @@
 {
-  "durationInMS": 23007,
+  "durationInMS": 31174,
   "passed": [
     "example.spec.ts:25:5"
   ],
@@ -10,5 +10,5 @@
   "timedOut": [],
   "flakey": [],
   "status": "passed",
-  "startedAt": 1704183007533
+  "startedAt": 1704196999474
 }

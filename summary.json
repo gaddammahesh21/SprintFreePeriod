@@ -1,7 +1,9 @@
 {
-  "durationInMS": 31174,
+  "durationInMS": 36437,
   "passed": [
-    "example.spec.ts:25:5"
+    "example.spec.ts:3:5",
+    "example.spec.ts:10:5",
+    "edulence.login.spec.ts:3:5"
   ],
   "skipped": [],
   "failed": [],
@@ -10,5 +12,5 @@
   "timedOut": [],
   "flakey": [],
   "status": "passed",
-  "startedAt": 1704196999474
+  "startedAt": 1704200993783
 }

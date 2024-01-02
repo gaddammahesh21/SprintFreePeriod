@@ -36,9 +36,9 @@ jobs:
             {
               attachments: [{
                 color: '${{ job.status }}' === 'success' ? 'good' : 'danger',
-                title: `Playwright Demo Automation Results :test_tube:`,
+                title: `Playwright Automation Results :test_tube:`,
                 fields: [{
-                  title: 'Site Under Test',
+                  title: 'Reports',
                   value: '${{ env.APP_URL }}',
                   short: true
                 },

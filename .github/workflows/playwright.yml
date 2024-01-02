@@ -14,7 +14,7 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
       - name: Run Playwright tests
-        run: npx playwright test
+        run: npx playwright test example.spec.ts
       - uses: actions/upload-artifact@v3
         if: always()
         with:
@@ -22,15 +22,13 @@ jobs:
           path: playwright-report/
           retention-days: 30
       - name: Slack Notification
-        uses: rtCamp/action-slack-notify@v2
-        # Send Slack notification on completion
-      - name: Run Playwright Tests
+        if: always()
         run: |
-          # Command to run your Playwright tests
-          npm run test # Replace with your Playwright test command
-      - name: Send Slack Notification
-        if: ${{ always() }}
-        env:
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }} # Make sure SLACK_WEBHOOK is set in repository secrets
-        run: |
-          curl -X POST -H 'Content-type: application/json' --data '{"text":"Playwright tests executed!"}' $SLACK_WEBHOOK
+          STATUS=$(cat ./summary.json | jq -r '.status')
+          echo "STATUS=$STATUS" >> $GITHUB_ENV 
+          PASSED=$(cat ./summary.json | jq -r '.passed[]' | tr '\n' ' ')
+          echo "PASSED=$PASSED" >> $GITHUB_ENV 
+          TIMEOUT=$(cat ./summary.json | jq -r '.timedOut[]' | tr '\n' ' ' | sed 's/ /--->TIMEOUT /g')
+          FAILURES=$(cat ./summary.json | jq -r '.failed[]' | tr '\n' ' ')
+          FAILURES+=$TIMEOUT
+          echo "FAILURES=$FAILURES" >> $GITHUB_ENV

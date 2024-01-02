@@ -85,5 +85,5 @@ jobs:
         uses: adrey/slack-file-upload-action@master
         with:
           token: ${{ secrets.SLACK_TOKEN }}
-          path: playwright-report\index.html
+          path: playwright-report/index.html
           channel: checking-notifications

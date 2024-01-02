@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test('test', async ({ page }) => {
+test('Login_Page', async ({ page }) => {
     await page.waitForTimeout(5000); 
     await page.goto('https://edulence.klstaging.net/');
     await page.waitForTimeout(1000);

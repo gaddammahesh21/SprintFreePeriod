@@ -33,4 +33,4 @@ jobs:
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }} # Make sure SLACK_WEBHOOK is set in repository secrets
         run: |
-          curl -X POST -H 'Content-type: application/json' --data '{"text":"Playwright tests completed successfully!"}' $SLACK_WEBHOOK
+          curl -X POST -H 'Content-type: application/json' --data '{"text":"Playwright tests executed!"}' $SLACK_WEBHOOK

@@ -30,7 +30,7 @@ test('test', async ({ page }) => {
     await page.locator('#password').fill('slacker');
     await page.getByRole('button', { name: 'Sign in' }).click();
     await page.goto('https://edulence.klstaging.net/dashboard/featured');
-   // await page.getByRole('button', { name: 'Accept', exact: true }).click();
+    await page.getByRole('button', { name: 'Accept', exact: true }).click();
     await page.getByText('Enterprise A.').click();
     await page.getByRole('link', { name: 'Admin page' }).click();
     await page.getByRole('button', { name: 'New ReportsBETA' }).click();

@@ -90,4 +90,4 @@ jobs:
         with:
           token: ${{ secrets.SLACK_TOKEN }}
           path: playwright-report.zip
-          channel: checking-notifications
+          channel: studio-platform-services-automation

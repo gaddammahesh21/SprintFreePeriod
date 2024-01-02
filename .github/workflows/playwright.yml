@@ -24,6 +24,10 @@ jobs:
       - name: Slack Notification
         uses: rtCamp/action-slack-notify@v2
         # Send Slack notification on completion
+      - name: Run Playwright Tests
+        run: |
+          # Command to run your Playwright tests
+          npm run test # Replace with your Playwright test command
       - name: Send Slack Notification
         if: ${{ always() }}
         env:

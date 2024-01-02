@@ -5,7 +5,6 @@ jobs:
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
@@ -16,7 +15,6 @@ jobs:
         run: npx playwright install --with-deps
       - name: Run Playwright tests
         run: npx playwright test
-      - name: Uploading artifact
       - uses: actions/upload-artifact@v3
         if: always()
         with:
